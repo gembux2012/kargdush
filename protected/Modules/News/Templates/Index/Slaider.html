@@ -1,0 +1,18 @@
+{% extends "Index.html" %}
+
+{% block subcontent  %}
+<div class="col-sm-9">
+<ol class="breadcrumb" xmlns="http://www.w3.org/1999/html">
+    <li><a href="/">Сайт</a></li>
+    <li>Галлерея новости {{items.title}}</li>
+</ol>
+<div class="row">
+    <div class="fotorama col-sm-12" data-fit="none" data-nav="thumbs" data-width="100%" >
+        {% for item in items.photo %}
+        <div data-img="{{item.image}}">123</div>
+        {% endfor %}
+    </div>
+</div>
+</div>
+
+{% endblock %}

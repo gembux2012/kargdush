@@ -1,0 +1,28 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+
+<div class="col-sm-9">
+    <div class="col-sm-8">
+        <ul class="breadcrumb">
+            <li><a href="/">Главная страница</a></li>
+            <li><a href="/news/">Новости</a></li>
+            {% for topic in item.topic.findAllParents %}
+            <li><a href="/news/topics/{{topic.Pk}}.html">{{topic.title}}</a></li>
+            {% endfor %}
+            <li><a href="/news/topics/{{item.topic.Pk}}.html">{{item.topic.title}}</a></li>
+        </ul>
+
+        {{item.lead|raw}}
+        {{item.text|raw}}
+    </div>
+    <div class="col-sm-4">
+       <br><br>
+        {% for photo in item.photo %}
+        <img src="{{photo.image}}"  class="img-thumbnail">
+        <p>{{photo.title}}</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

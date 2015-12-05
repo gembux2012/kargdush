@@ -1,0 +1,82 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container" style="height: 100px"></div>
+<section id="inner-headline">
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <ul class="breadcrumb">
+                <li><a href="/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                <li class="active">Блог</li>
+            </ul>
+        </div>
+    </div>
+</div>
+</section>
+
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+              {% for item in items %}
+                <article>
+                    <div class="post-image">
+                        <div class="post-heading">
+                            <h3><a href="#">{{item.title}}</a></h3>
+                            <h5>{{item.topic.title}}</h5>
+                        </div>
+                        <img src="{{item.photo[0].image}}" alt="">
+                    </div>
+                    {{item.lead|raw}}
+                    <div class="bottom-article">
+                        <ul class="meta-post">
+                            <li><i class="fa fa-calendar"></i>{{item.published|date("d.m.Y")}}</li>
+                            <li><i class="fa fa-user"></i><a href="#">{{item.user.userdata.name}} </a></li>
+                            {% if item.user.userdata.name == app.user.userdata.name %}
+                            <li><i class="fa fa-edit"></i><a href="/news/admin/BlogEdit?id={{item.Pk}}&baselink=/news/blog/">Редактировать </a></li>
+                            {% endif %}
+
+
+                        </ul>
+                        <a href="/news/BlogOne?id={{item.Pk}}" class="pull-right">Читать дальше ...</i></a>
+                    </div>
+                </article>
+                {% endfor %}
+            </div>
+
+
+
+            <div class="col-lg-4">
+                <aside class="right-sidebar">
+
+                    <div class="widget">
+                        <h5 class="widgetheading">Темы</h5>
+                        <ul class="cat">
+                            {% for theme in themes %}
+                            <li><i class="icon-angle-right"></i><a href="/news/blog?topic={{theme.Pk}}">{{theme.title}}</a><span> </span></li>
+                            {% endfor %}
+                            <li><i class="icon-angle-right"></i><a href="/news/blog?topic=4">Все темы</a><span> </span></li>
+                        </ul>
+                    </div><br><br>
+                    {% if app.user.userdata.name is not empty %}
+                    <div class="widget">
+                        <h5 class="widgetheading">Для сотрудников</h5>
+                        <ul class="tags">
+                            <li><a href="/news/admin/BlogEdit?id=new&baselink=/news/blog/">Добавить запись в блог</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+
+
+                </aside>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+<div class="container">
+<div class="row">{{widget('pager', {'total': itemsCount, 'size': pageSize, 'active': activePage, 'url':'/news/blog?page=%d'})}}</div>
+</div>
+{% endblock %}

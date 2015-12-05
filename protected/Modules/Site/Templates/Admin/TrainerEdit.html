@@ -1,0 +1,118 @@
+{% extends 'Admin/Blank.html' %}
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="/admin/">Админ-панель</a></li>
+    <li><a href="/admin/site/Trainers">Тренеры</a></li>
+    <li>Тренер</li>
+</ol>
+{% endblock %}
+
+{% block header %}
+Тренер
+{% endblock %}
+
+{% block content %}
+
+
+
+    <form class="form-horizontal" id="form" method="post" enctype="multipart/form-data" action="/admin/site/TrainerSave">
+        <input type="hidden" name="id" value="{{item.Pk}}">
+        <div class="form-group">
+            <label for="name" class="col-sm-2 control-label">Ф.И.О.</label>
+
+            <div class="col-sm-10">
+                <input type="text" disabled class="form-control" id="name" name="name" placeholder="Ф.И.О."
+                       value="{{item.name}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">О тренере</label>
+
+            <div class="col-sm-10">
+                <t4:editor name="text">{{item.text}}</t4:editor>
+            </div>
+        </div>
+        <!--treners-->
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <div class="panel-group" id="accordion">
+                    <!-- 1 панель -->
+                    <div class="panel panel-default">
+                        <!-- Заголовок 1 панели -->
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">Ученики тренера
+                                    </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse">
+                            <!-- Содержимое 1 панели -->
+                            <div class="panel-body">
+                                <div class="checkbox">
+                                    {% for student in students %}
+                                    {% set checked = 0 %}
+                                    {% for itemstudent in student.trainer %}
+
+                                    {% if itemstudent.Pk == item.Pk %}
+
+
+                                    {% set checked = 1 %}
+                                    {% endif %}
+                                    {% endfor %}
+                                    {% if checked ==1 %}
+                                    <label><input type="checkbox" checked name="students[]" value={{student.Pk}}>{{student.name}}</label><br>
+                                    {% else %}
+                                    <label><input type="checkbox" name="students[]" value={{student.Pk}}>{{student.name}}</label><br>
+                                    {% endif %}
+                                    {% endfor %}
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+        <!---foto-->
+        <div class="form-group">
+
+            <label for="text" class="col-sm-2 control-label">Фото тренера</label>
+
+            <div class="col-sm-10">
+
+                <table class="table table-striped table-hover">
+
+                    <th class="col-sm-2">Фотография</th>
+                    <th class="col-sm-2">Описание</th>
+                    <th></th>
+                    {% for photo in item.photo %}
+                    <tr>
+                        <td>
+                            <img class="img-responsive" src="{{ photo.image }}" width="80" alt="{{ photo.title }}"/>
+                        </td>
+                        <td>{{ photo.title }}</td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        <hr>
+
+
+        <footer class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">{% if item.isNew %}Создать{% else %}Сохранить страницу{% endif %}
+            </button>
+            <a class="btn btn-default" href="/admin/site/?class={{class}}&name={{name}}">Выход</a>
+        </footer>
+
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+

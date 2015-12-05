@@ -1,0 +1,25 @@
+<div class="container" >
+
+    <div class="col-sm-12">
+
+        <div id="carousel3" class="owl-carousel">
+            {% for item in items %}
+            <div>
+                <a href="/news/11.html">
+                    <div class="item-img-wrap">
+                        <img src="{{item.photo[0].image}}" class="img-responsive" alt="">
+                        <div class="item-img-overlay" >
+                            <span></span>
+                        </div>
+                    </div>
+                </a>
+                <div class="news-desc">
+                    <h3 class="text-center">{{item.title}}</h3>
+
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div>
+</div>

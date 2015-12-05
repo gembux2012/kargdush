@@ -1,0 +1,94 @@
+/* Заставка */
+.splash {
+    /* Отступ для содержимого, помещенного в splash */
+
+    padding:20em 30em 20em;
+    /* Картинка, которая используются для splash */
+    background-image:url(../img/images2.jpg);
+    /* Масштабируем картинку с сохранением пропорций */
+    background-size:cover;
+    /* Запрещаем фоновому изображению прокручиваться, т.е. делаем его неподвижным */
+    background-attachment:fixed;
+    /* Цвет текста */
+    color:#fff;
+    /* Выравниваем текста внутри splash по центру */
+    text-align:center;
+
+}
+.main-page {
+    background: #f0f0f0;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 2px;
+    //color: #a1a4a8;
+}
+
+.fotorama .any {
+    text-shadow: 0 1px 0 rgba(255, 255, 255, .5);
+    font-family: Georgia, serif;
+    font-size: 72px;
+    text-align: center;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 15%;
+    line-height: normal;
+}
+
+.fotorama .inverse {
+    color: #fff;
+    text-shadow: 0 1px 0 #000;
+}
+
+.navbar {
+    background-color:#152f49;;
+    color:#ffffff;
+    border-radius:0;
+}
+.navbar-nav > li > a {
+    color:#fff;
+    padding-left:20px;
+    padding-right:20px;
+    border-left:1px solid black;
+}
+.navbar-nav > li:last-child > a {
+    border-right:1px solid black;
+}
+
+.navbar-nav li a:hover {
+    background-color: #66BBCC;
+}
+
+body {
+    font-family: 'Open Sans',Arial,Helvetica,Sans-Serif;
+    font-weight:300;
+    color:black;
+    background-color:white;
+}
+
+.file_upload{
+    position: relative;
+    overflow: hidden;
+    font-size: 1em;        /* example */
+    height: 2em;           /* example */
+    line-height: 2em       /* the same as height */
+}
+
+.file_upload > button{
+    width: 100%
+}
+
+.file_upload input[type=file]{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transform: scale(20);
+    letter-spacing: 10em;     /* IE 9 fix */
+    -ms-transform: scale(20); /* IE 9 fix */
+    opacity: 0;
+    cursor: pointer
+}
+
+
+

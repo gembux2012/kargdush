@@ -1,0 +1,56 @@
+{% extends 'Admin/Blank.html' %}
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="/admin/">Админ-панель</a></li>
+    <li><a href="/admin/roles/">Роли</a></li>
+    <li>Добавление роли</li>
+</ol>
+{% endblock %}
+
+{% block header %}
+{% if item.isNew %}Добавить пользователя{% else %}Редактировать пользователя{% endif %}
+{% endblock %}
+
+{% block content %}
+{% for error in errors %}
+<div class="alert alert-danger" role="alert">{{error.message}}</div>
+{% endfor %}
+<div class="row">
+    <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/admin/users/user">
+
+        {% if not item.isNew %}
+        <input type="hidden" name="id" value="{{item.Pk}}">
+        {% endif %}
+
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">EMAIL пользователя</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" name="registeradm[email]" placeholder="email" value="{{ item.title }}" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Пароль</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="password" name="registeradm[password]" placeholder="пароль" value="{{ item.name }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">Ф.И.О. пользователя</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="fio" name="registeradm[fio]" placeholder="Ф.И.О." value="{{ item.name }}">
+            </div>
+        </div>
+
+        <footer class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">{% if item.isNew %}Создать{% else %}Сохранить{% endif %}</button>
+            <button type="button" class="btn btn-default" onclick="window.history.back();">Отменить</button>
+
+        </footer>
+
+    </form>
+</div>
+
+{% endblock %}
+

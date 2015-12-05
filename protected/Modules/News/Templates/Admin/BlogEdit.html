@@ -1,0 +1,123 @@
+{% extends 'Admin/Blank.html' %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="/news/Blog">Блог</a></li>
+    <li>{% if item.isNew %}Добавить в блог{% else %}Редактировать {% endif %}</li>
+</ol>
+{% endblock %}
+
+{% block header %}
+{% if item.isNew %}Добавить в блог{% else %}Редактировать {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/admin/news/BlogSave">
+
+        {% if not item.isNew %}
+        <input type="hidden" name="id" value="{{item.Pk}}">
+        {% endif %}
+        <input type="hidden" name="baselink" value="{{baselink}}">
+
+            <div class="form-group">
+                <label for="title" class="col-sm-2 control-label">Заголовок</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="title" name="title" placeholder="Заголовок" value="{{item.title}}">
+                </div>
+            </div>
+
+
+        <div class="form-group">
+            <label for="topic" class="col-sm-2 control-label">Раздел</label>
+            <div class="col-sm-10">
+                <select id='topic' name="topic" class="form-control">
+                    {% for theme in themes %}
+                    {% if theme.Pk == item.topic.Pk %}
+                    <option value="{{theme.Pk}}" selected> {{theme.title}}</option>
+                    {% else %}
+                    <option value="{{theme.Pk}}"> {{theme.title}}</option>
+                    {% endif %}
+                    {% endfor %}
+                </select>
+                <i></i>
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="lead" class="col-sm-2 control-label">Lead (введение)</label>
+            <div class="col-sm-10">
+                <t4:editor name="lead">{{item.lead}}</t4:editor>
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">Текст статьи</label>
+            <div class="col-sm-10">
+                <t4:editor name="text">{{item.text}}</t4:editor>
+            </div>
+        </div>
+
+        {% if not item.isNew %}
+        <!--foto-->
+        <div class="form-group">
+
+            <label for="text" class="col-sm-2 control-label">Фото блога</label>
+
+            <div class="col-sm-10">
+                <a class="btn btn-primary" href="/LoadImg/?name=Блог&id={{item.Pk}}&subclass=story"><i
+                        class="glyphicon glyphicon-plus-sign"></i> Добавить фото</a><br>
+                <table class="table table-striped table-hover">
+
+                    <th class="col-sm-2">Фотография</th>
+                    <th class="col-sm-2">Описание</th>
+                    <th></th>
+                    </tr>
+                    {% for photo in item.photo %}
+                    <tr>
+                        <td>
+                            <img class="img-responsive" src="{{ photo.image }}" width="80" alt="{{ photo.title }}"/>
+                        </td>
+                        <td>{{ photo.title }}</td>
+                        <td style="white-space: nowrap">
+                            <a class="btn btn-primary btn-sm" href="/admin/news/BlogPhotoEdit/?id={{photo.Pk}}"><i
+                                    class="glyphicon glyphicon-edit"></i></a>
+                            <a class="btn btn-danger btn-sm" href="/admin/news/BlogPhotoDelete/?id={{photo.Pk}}"><i
+                                    class="glyphicon glyphicon-remove"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        {% endif %}
+        <hr>
+        <footer class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">{% if item.isNew %}Создать{% else %}Сохранить{% endif %}</button>
+            <button type="button" class="btn btn-default" onclick="window.history.back();">Отменить</button>
+            {% if not item.isNew %}<a href="/admin/news/BlogDelete/?id={{item.Pk}}" class="confirmable"><button type="button" class="btn btn-danger">Удалить</button></a>{% endif %}
+        </footer>
+
+    </form>
+</div>
+
+
+{% endblock %}
+
+{% block pagescript %}
+<script type="text/javascript">
+    $(function () {
+
+        $('a.confirmable').click(function() {
+            return confirm('Вы уверены?');
+        });
+
+
+
+
+    });
+</script>
+{% endblock %}

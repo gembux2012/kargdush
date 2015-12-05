@@ -1,0 +1,29 @@
+<div class="container" style="height: 100px"></div>
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li class="active">Все новости</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<br><br>
+<div class="container">
+<section>
+    {% for item in items %}
+    <article class="clearfix">
+        <p>{{item.published|date("d.m.Y")}}</p>
+        <h3><a href="/news/NewsOne?id={{item.Pk}}">{{item.title}}</a></h3>
+        {% if item.photo[0].image %}<img src="{{item.photo[0].image}}" style="max-width: 33%; margin-right: 10px;" class="img-responsive pull-left">{% endif %}
+        {{item.lead|raw}}
+    </article>
+    {% endfor %}
+</section>
+
+        <div class="row">{{widget('pager', {'total': itemsCount, 'size': pageSize, 'active': activePage, 'url':'/news/blog?page=%d'})}}</div>
+</div>

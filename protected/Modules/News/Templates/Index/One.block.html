@@ -1,0 +1,32 @@
+<div class="container">
+
+
+    <div class="col-lg-12" >
+        div class="big-cta">
+        <div class="cta-text">
+            <h2><span>П</span>оследние новости</h2>
+        </div>
+    </div>
+
+    <!-- Slider -->
+        <div id="main-slider" class="flexslider" >
+            <ul class="slides" >
+                {% for photo in items %}
+                <li >
+                    <img src="{{item.photo.image}}"  class="img-responsive"  alt="" />
+                    <div class="flex-caption">
+                        <h4>{{item.title}}</h4>
+                        <a href="#" class="btn btn-theme">{{item.photo.title}}</a>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {{item.lead|raw}}
+    {{item.text|raw}}
+    </div>
+
+        <!-- end slider -->
+
+
+</div>

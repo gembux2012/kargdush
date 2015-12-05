@@ -1,0 +1,55 @@
+{% extends 'Admin/Blank.html' %}
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="/admin/">Админ-панель</a></li>
+    <li>Секции</li>
+</ol>
+{% endblock %}
+
+{% block toolbar %}
+<a class="btn btn-primary" href="/admin/site/ServiceEdit?id=new"><i class="glyphicon glyphicon-plus-sign"></i> Добавить секцию </a>
+{% endblock %}
+
+{% block header %}
+Секция
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <table class="table table-striped table-hover">
+        <tr>
+            <th>#</th>
+            <th>Название</th>
+            <th></th>
+        </tr>
+        {% for item in items %}
+        <tr>
+            <td><a href="/admin/site/edit/?id={{item.Pk}}">{{item.Pk}}</a></td>
+            <td><a href="/admin/site/edit/?id={{item.Pk}}">{{item.title}}</a></td>
+            <td style="white-space: nowrap">
+                <a class="btn btn-primary btn-sm" href="/admin/site/ServiceEdit?id={{item.Pk}}"><i class="glyphicon glyphicon-edit"></i></a>
+                <a class="btn btn-danger btn-sm confirmable" href="/admin/site/ServiceDelete/?id={{item.Pk}}"><i class="glyphicon glyphicon-remove"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
+
+{% block pagescript %}
+<script type="text/javascript">
+    $(function() {
+        $('a.confirmable').click(function() {
+            return confirm('Вы уверены?');
+        });
+
+        $('#site-preview').on('show.bs.modal', function (e) {
+            var id = $(e.relatedTarget).attr('data-id');
+            $(this).find('.modal-body').load('/admin/site/view?id='+id);
+        })
+
+    });
+</script>
+{% endblock %}

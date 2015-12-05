@@ -1,0 +1,40 @@
+{% extends 'Admin/Blank.html' %}
+
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="/admin/">Админ-панель</a></li>
+    <li><a href="/admin/site/org/">Организация</a></li>
+    <li><a href="/admin/site/OrgEdit/">{{item.org.title_short}}</a></li>
+    </ol>
+
+
+    {% endblock %}
+
+    {% block header %}
+    Редактировать название документа
+    {% endblock %}
+
+    {% block content %}
+
+    <form class="form-horizontal" method="post" enctype="multipart/form-data" action="/admin/site/DocSave/">
+
+        <input type="hidden" name="id" value="{{item.Pk}}">
+        <div class="form-group">
+
+            <label for="title" class="col-sm-2 control-label">Введите новое название</label>
+            <div class="col-sm-10">
+            <input type="text" name="title" value="{{item.title}}">
+                </div>
+        </div>
+
+        <br>
+
+        <div class="row">
+            <footer class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <button type="button" class="btn btn-default" onclick="window.history.back()">Отменить
+                </button>
+            </footer>
+        </div>
+    </form>
+    {% endblock %}

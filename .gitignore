@@ -1,0 +1,9 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+www/Assets/
+public/Assets/
+protected/Cache/
+public/Cache/
+public/rubrics
+public/public
+www/Cache/

@@ -1,0 +1,69 @@
+{% extends "Index.html" %}
+
+{% block content  %}
+
+<div class="container" style="height: 100px"></div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12" style="background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);">
+            <div class="big-cta">
+                <div class="cta-text">
+                    <h2><span>Н</span>овости</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<t4:block path="/News//PageForTopic" title="Новости" /><br><br>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12" style="background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);">
+                <div class="big-cta">
+                    <div class="cta-text">
+                        <h4><span>Н</span>аши <span>у</span>слуги</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<t4:block path="/Site//Services"  /><br><br>
+
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12" style="background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);">
+            <div class="big-cta">
+                <div class="cta-text">
+                    <h4><span>Наши</span> тренеры</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<t4:block path="/Site//Trainers"  /><br><br>
+
+<div class="container-fluid">
+<div class="row">
+    <div class="col-lg-12" style="background-image: linear-gradient(to bottom,#fff 0,#f8f8f8 100%);">
+        <div class="big-cta">
+            <div class="cta-text">
+                <h4>Наши ученики</h4>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<t4:block path="/Site//Students"  />
+
+
+
+
+
+{% endblock %}
+

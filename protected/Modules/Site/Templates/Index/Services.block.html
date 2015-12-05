@@ -1,0 +1,64 @@
+<div class="container" >
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#one" data-toggle="tab"><i class="icon-briefcase"></i>Общие</a></li>
+    <li class=""><a href="#two" data-toggle="tab">Платные</a></li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane active" id="one">
+        <div class="col-sm-12">
+
+            <div id="carousel" class="owl-carousel">
+                {% for item in items %}
+                <div style="margin: 5px">
+                    <a href="/site/service?id={{item.Pk}}">
+                        <div class="item-img-wrap ">
+                            <img src="{{item.photo[0].image}}" class="img-responsive" alt="">
+                            <div class="item-img-overlay" >
+                                <span></span>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="news-desc">
+                        <h4>{{item.title}}</h4>
+                         <span><a href="/site/service?id={{item.Pk}}">Подробнее...</a></span>
+                    </div>
+
+
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane" id="two">
+        <div class="col-sm-12">
+
+            <div id="carousel3" class="owl-carousel">
+                {% for item in items %}
+                <div style="margin: 5px">
+                    <a href="/site/service?id={{item.Pk}}">
+                        <div class="item-img-wrap ">
+                            <img src="{{item.photo[0].image}}" class="img-responsive" alt="">
+                            <div class="item-img-overlay" >
+                                <span></span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="news-desc">
+                    <h4>{{item.title}}</h4>
+                    <span><a href="/site/service?id={{item.Pk}}">Подробнее...</a></span>
+                </div>
+
+
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</div>

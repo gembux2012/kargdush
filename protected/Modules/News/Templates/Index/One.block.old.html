@@ -1,0 +1,13 @@
+<div class="container">
+    <h1>{{item.title}}</h1>
+    <div class="clearfix">
+        <div class="fotorama col-sm-12  "  data-allowfullscreen="native" data-fit="cover" data-nav="none" data-width="100%">
+            {% for photo in item.photo %}
+            <img src="{{photo.image}} ">
+            {% endfor %}
+        </div>
+        {{item.lead|raw}}
+    </div>
+    <hr>
+    {{item.text|raw}}
+</div>

@@ -1,0 +1,89 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li class="active">О школе</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <article>
+                    <div class="post-image">
+                        <div class="post-heading">
+                            <h3><span style="color: #68A4C4">П</span>олное название</h3>
+                        </div>
+                        <h4>{{item.title}}</h4>
+
+                    </div>
+
+                </article>
+
+                <article>
+                    <div class="post-image">
+                        <div class="post-heading">
+
+                            <h3><span style="color: #68A4C4">Д</span>иректор</h3>
+
+                        </div>
+                        <h4>{{director.name}}</h4>
+                        <img src="{{director.photo[0].image}}" style="margin-right: 10px" class="img-thumbnail pull-left"
+                             width="20%">
+                        {{director.text|raw}}
+                    </div>
+                </article>
+
+                <article>
+                    <div class="post-image">
+                        <div class="post-heading">
+                            <h3><a href="#"><span style="color: #68A4C4">О</span> школе</a></h3>
+                        </div>
+
+                    </div>
+                    {{item.text|raw}}
+
+                </article>
+
+            </div>
+            <div class="col-lg-4">
+                <aside class="right-sidebar">
+
+                    <div class="widget">
+                        <h5 class="widgetheading">Официальные документы</h5>
+                        <ul class="cat">
+                            {% for docs in item.doc %}
+                            <li><i class="icon-angle-right"></i><a href="{{docs.doc}}" target="_blank">{{docs.title}}</a><span> </span></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    <div class="widget">
+                        <h5 class="widgetheading">Адреса и контакты</h5>
+                        <ul class="recent">
+                            <li>
+                                <p>{{item.address}}</p>
+
+                                <p ><i class="glyphicon glyphicon-earphone"></i>&nbsp;{{item.phone}}</p>
+                                <p>e-email:<a href="mailto:{{item.email}}">&nbsp;{{item.email}}</a></p>
+                            </li>
+                            </ul>
+                        </div>
+                    </aside>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+</div>
+{% endblock %}

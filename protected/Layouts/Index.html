@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>КСП</title>
+
+
+        {{ publishCss()}}
+
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <!-- css -->
+                <!--<link href="{{ asset('/Layouts/Moderna/css/fancybox/jquery.fancybox.css')}}" rel="stylesheet">
+
+        <link href="{{ asset('/Layouts/Moderna/css/flexslider.css')}}" rel="stylesheet" />
+        <link href="{{ asset('/Layouts/Moderna/css/style.css')}}" rel="stylesheet" />
+
+
+
+        <link href="{{ asset('/Layouts/Moderna/skins/default.css')}}" rel="stylesheet" />-->
+
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+
+
+    </head>
+	<body>
+
+    <div id="wrapper" >
+        <!-- start header -->
+        <header>
+            <div class="navbar navbar-default navbar-fixed-top ">
+                <div class="container">
+                    <div class="navbar-header ">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="/"><t4:block path="///header"/>
+                        </a>
+                    </div>
+                    <div class="navbar-collapse collapse ">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/site/org">О школе</a></li>
+
+                            <li><a href="/News">Архив новостей</a></li>
+                            <li><a href="/news/blog">Блог</a></li>
+
+                            {% if not app.user %}
+                            <li class="dropdown" >
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-user"></i></a>
+
+                                <div class="dropdown-menu" style="margin-left: 30px">
+                                    <form role="form" action="/user/login.html" method="post">
+
+                                        <h4>Вход для сотрудников:</h4>
+
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+                                                <input type="text" placeholder="E-mail" class="form-control input-sm" name="login[email]">
+                                            </div>
+                                            <br>
+
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+                                                <input type="password" placeholder="Пароль" class="form-control input-sm" name="login[password]">
+                                            </div><br>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-theme-bg pull-right"><i class="fa fa-sign-in"></i> Войти
+                                                </button>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <hr>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            {% else %}
+                            <li><a href="/user/logout"><i class="fa fa-sign-out"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+        <!-- end header -->
+     </div>
+        {% block content %}{% endblock %}
+
+    </body>
+    <br><br>
+        <footer>
+            <div class="container">
+                <t4:block path="///footer" />
+            </div>
+            <div class=" container copyright">
+                <p>
+                    <span>© avg 2014 All right reserved</span>
+                </p>
+
+            </div>
+
+        </footer>
+
+</div>
+
+
+
+
+
+
+    <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
+
+    {{ publishJs() }}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#carousel").owlCarousel({
+                        items : 3,
+                        autoPlay : true,
+                        slideSpeed: 300,
+                        paginationSpeed: 300,
+                    }
+            );
+
+            $("#carousel-service-student").owlCarousel({
+                        items : 1,
+                        autoPlay : false,
+                        lazyLoad : true,
+                        lazyEffect:	"fade",
+                        animateOut: 'fadeOut',
+                        navigation : true,
+                        pagination: true,
+                        slideSpeed: 50,
+                        navigationText:	["<<",">>"]
+                    }
+            );
+
+            $("#carousel-service-trainer").owlCarousel({
+                        items : 1,
+                        autoPlay : false,
+                        navigation : true,
+                        pagination: true,
+                        navigationText:	["<<",">>"]
+                    }
+            );
+            $("#carousel2").owlCarousel({
+                        items : 5,
+                        autoPlay : true,
+                        navigation : false,
+                    }
+            );
+
+            $("#carousel3").owlCarousel({
+                        items : 3,
+                        autoPlay : true,
+                        navigation : false,
+                        itemsCustom: false,
+                        itemsDesktop: [1199, 3],
+                        itemsDesktopSmall: [980, 3],
+                        itemsTablet: [768, 3],
+                        itemsTabletSmall: false,
+                        itemsMobile: [479, 1],
+                        singleItem: false,
+                    }
+            );
+
+            $("#carousel-trainer").owlCarousel({
+                        items : 4,
+                        autoPlay : true,
+                    }
+            );
+            $("#single_1").fancybox({
+                helpers: {
+                    title : {
+                        type : 'float'
+                    }
+                }
+            });
+
+        });
+
+
+            $(window).scroll(function() {
+                var top = $(document).scrollTop();
+                if (top < 100) $(".floating").css({top: '0', position: 'relative'});
+                else $(".floating").css({top: '10px', position: 'fixed'});
+            });
+
+    </script>
+     
+
+   {% block pagescript %}{% endblock %}
+
+
+
+    </body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<div class="container" style="height: 100px"></div>
+
+<section id="inner-headline">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="breadcrumb">
+                    <li><a href="/"><i class="fa fa-home"></i></a><i class="icon-angle-right"></i></li>
+                    <li><a href="/blog/">Блог</a></li>
+                    <li class="active">{{item.title}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+<div class="container">
+    <div class="big-cta">
+        <div class="cta-text">
+            <h2><span>{{item.title}}</span></h2>
+        </div>
+    </div>
+    <!-- Slider -->
+    <div id="main-slider" class="flexslider">
+        <ul class="slides">
+            {% for photo in item.photo %}
+            <li>
+                <img src="{{photo.image}}" class="img-responsive" alt=""/>
+                {% if photo.title != "" %}
+                <div class="flex-caption">
+                    <h4>{{photo.title}}</h4>
+                </div>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+<br>
+<div class="container">
+    {{item.lead|raw}}
+    {{item.text|raw}}
+</div>
+
+</div>
+
+
+{% endblock %}

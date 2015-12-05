@@ -1,0 +1,147 @@
+{% extends 'Admin/Blank.html' %}
+{% block breadcrumbs %}
+<ol class="breadcrumb">
+    <li><a href="/admin/">Админ-панель</a></li>
+    <li>Организация</li>
+</ol>
+{% endblock %}
+
+
+{% block content %}
+
+<<div class="row">
+    <form class="form-horizontal" id="form" method="post" enctype="multipart/form-data" action="/admin/site/OrgSave">
+
+        {% if not item.isNew %}
+        <input type="hidden" name="id" value="{{item.Pk}}">
+        {% endif %}
+
+
+
+        <div class="form-group">
+            <label for="title_short" class="col-sm-2 control-label">Краткое название</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="title_short" name="title_short" placeholder="Краткое название" value="{{item.title_short}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="title" class="col-sm-2 control-label">Полное название</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="title" name="title" placeholder="Полное название" value="{{item.title}}">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="adress" class="col-sm-2 control-label">Адрес</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="adress" name="address" placeholder="Адрес" value="{{item.address}}">
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="phone" class="col-sm-2 control-label">Контактные телефоны</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Контактные телефоны" value="{{item.phone}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">email для контакта</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="email" name="email" placeholder="email для контакта" value="{{item.email}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">О организации</label>
+            <div class="col-sm-10">
+                <t4:editor name="text">{{item.text}}</t4:editor>
+            </div>
+        </div>
+
+        {% if director.name  !=null %}
+        <div class="form-group">
+            <label for="direct" class="col-sm-2 control-label">Ф.И.О. директора</label>
+            <div class="col-sm-10">
+                <input type="text" disabled class="form-control" id="direct" name="name" placeholder="Ф.И.О. директора" value="{{director.name}}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">О директоре</label>
+            <div class="col-sm-10">
+                <input type="hidden" name="direct_id" value="{{director.Pk}}">
+                <t4:editor name="direct_about">{{director.text}}</t4:editor>
+            </div>
+        </div>
+
+        <!--  foto-->
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">Фото директора</label>
+            <div class="col-sm-10">
+
+                <div class="media">
+                    <div class="media-left">
+                        <img class="media-object" src="{{ item.photo[0].image }}" style="max-width: 200px; max-height: 200px;">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr>
+        {% endif %}
+        <!--doc-->
+        <div class="form-group">
+            <label for="text" class="col-sm-2 control-label">Документы организации</label>
+
+            <div class="col-sm-10">
+                <a  href="/LoadImg/LoadDoc?&id={{item.Pk}}&subclass=org"
+                   class="btn btn-primary">Добавить документы</a>
+                <br><br>
+
+
+                <table class="table table-striped table-hover">
+
+                    <th class="col-sm-2">Название документа</th>
+                    <th class="col-sm-2"></th>
+
+
+                    {% for  docs in item.doc %}
+                       <tr>
+                        <td>
+                            <a href="{{docs.doc}}" target="_blank">{{docs.title}}</a>
+                        </td>
+
+
+                        <td style="white-space: nowrap">
+                            <a class="btn btn-primary btn-sm" href="/admin/site/DocEdit/?id={{docs.Pk}}"><i
+                                    class="glyphicon glyphicon-edit"></i></a>
+                            <a class="btn btn-danger btn-sm" href="/admin/site/DocDelete/?id={{docs.Pk}}"><i
+                                    class="glyphicon glyphicon-remove"></i></a>
+                        </td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+
+
+        </div>
+
+
+
+
+        <hr>
+
+
+        <footer class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-primary">{% if item.isNew %}Создать{% else %}Сохранить страницу{% endif %}</button>
+            <a class="btn btn-default" href="/admin/site/?class={{class}}&name={{name}}"  >Выход</a>
+        </footer>
+    </form>
+</div>
+
+{% endblock %}
+

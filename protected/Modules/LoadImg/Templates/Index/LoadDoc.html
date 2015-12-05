@@ -1,0 +1,51 @@
+{% extends 'Admin/Blank.html' %}
+
+{% block content %}
+{{ publish('/Modules/LoadImg/assets') }}
+<link href="{{ asset('/Modules/LoadImg/assets/uploadfile.css') }}" rel="stylesheet">
+<link href="{{ asset('/Modules/LoadImg/assets/uploadfile.custom.css') }}" rel="stylesheet">
+
+<h3 class="text-center"> Загрузка документов *.doc, *.pdf</h3>
+<button class="btn " onclick="history.back()">Назад на страницу</button><br><br>
+<hr>
+
+<div id="fileuploader">Upload</div>
+<button id="extrabutton" class="btn btn-success">Загрузить</button>
+
+{% endblock %}
+
+{% block pagescript %}
+
+
+<script src="{{ asset('/Modules/LoadImg/assets/jquery.uploadfile.min.js') }}"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var extraObj = $("#fileuploader").uploadFile({
+            url:"/LoadImg/UpLoadDoc",
+            fileName:"myfile",
+            dragDrop:false,
+            uploadStr:"Выберите файлы",
+            cancelStr:"Удалить",
+            extErrorStr:"разрешено только  *",
+            allowedTypes:"pdf,doc",
+            autoSubmit:false,
+            extraHTML:function()
+            {
+                var html='<input type="hidden" name="id" value="{{id}}">';
+                    html+='<input type="hidden" name="subclass" value="{{subclass}}">';
+                    html+='<p>Название документа<p>';
+                    html+='*<input  type="text" name="name">';
+                return html;
+            }
+        });
+        $("#extrabutton").click(function()
+        {
+            if($('#text').val()!="")
+            extraObj.startUpload();
+        });
+
+    });
+</script>
+{% endblock %}
+

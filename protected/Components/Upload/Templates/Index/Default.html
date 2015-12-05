@@ -1,0 +1,50 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+{{ publish('/Modules/LoadImg/assets') }}
+<link href="{{ asset('/Modules/LoadImg/assets/header.css') }}" rel="stylesheet">
+<link href="{{ asset('/Modules/LoadImg/assets/style.css') }}" rel="stylesheet">
+    <input type="hidden" id="id" value="{{id}}">
+    <input type="hidden" id="class" value="{{class}}">
+    <input type="hidden" id="path" value="{{path}}">
+   <h4>Загрузка изображения на сервер для страницы {{name}}</h4>
+    <a class="text-center" href="javascript:history.back();">Назад на старницу</a>
+<div class="content">
+        <form id="frm">
+            <input type="file" id="uploadbtn" multiple />
+        </form>
+    </div>
+    <!-- Область предпросмотра -->
+    <div id="uploaded-holder">
+        <div id="dropped-files">
+            <!-- Кнопки загрузить и удалить, а также количество файлов -->
+            <div id="upload-button">
+                <center>
+                    <span>0 Файлов</span>
+                    <a href="#" class="upload">Загрузить</a>
+                    <a href="#" class="delete">Удалить</a>
+                    <!-- Прогресс бар загрузки -->
+                    <div id="loading">
+                        <div id="loading-bar">
+                            <div class="loading-color"></div>
+                        </div>
+                        <div id="loading-content"></div>
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+    <!-- Список загруженных файлов -->
+    <div id="file-name-holder">
+        <ul id="uploaded-files">
+            <h1>Загруженные файлы</h1>
+        </ul>
+    </div>
+
+</div>
+
+
+<script src="{{ asset('/Modules/LoadImg/assets/javascript.js') }}"></script>
+
+{% endblock %}
+
