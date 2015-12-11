@@ -6,8 +6,8 @@ return [
             'driver' => 'mysql',
             'host' => 'localhost',
             'dbname' => 'kargdush',
-            'user' => 'admin_default',
-            'password' => 'r10DwlEK',
+            'user' => 'root',
+            'password' => '',
         ]
     ],
     'auth' => [
