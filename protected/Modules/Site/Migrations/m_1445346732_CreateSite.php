@@ -16,6 +16,7 @@ class m_1445346732_CreateSite
             $this->createTable('services', [
                 'title'     => ['type'=>'string'],
                 'text'  => ['type'=>'text'],
+                'paid'  => ['type'=>'text'],
 
             ], [
                 ['columns' => ['title']],
