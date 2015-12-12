@@ -40,7 +40,7 @@
     <!-- Target: symlink                                -->
     <!-- ============================================  -->
     <target name="symlink">
-        <symlink target="${current.dir}" link="/var/www/html/${build.branch}/current" overwrite="true" />
+        <symlink target="${current.dir}" link="/home/site/www/${build.branch}/current" overwrite="true" />
     </target>
 
     <target name="build" depends="vars, copy, symlink" />
