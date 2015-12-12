@@ -44,6 +44,6 @@
         <symlink target="${current.dir}" link="/var/www/html/${build.branch}/current" overwrite="true" />
     </target>
 
-    <target name="build" depends="vars, copy,  migrate, symlink" />
+    <target name="build" depends="vars, copy,   symlink" />
 
 </project>
