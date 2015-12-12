@@ -15,6 +15,8 @@
         </php>
         <resolvepath propertyName="current.dir" file="/home/site/www/${build.branch}/${build.time}" />
         <echo msg="Current build dir is: ${current.dir}" />
+        <resolvepath propertyName="t4.dir" file="${project.dir}/t4" />
+        <echo msg="T4 dir is: ${t4.dir}" />
     </target>
 
 
@@ -32,6 +34,22 @@
         <chmod file="${current.dir}/public" mode="0777" />
     </target>
 
+    <!-- ============================================  -->
+    <!-- Target: composer                              -->
+    <!-- ============================================  -->
+    <target name="composer">
+        <echo msg="Install composer depedencies for T4 framework..." />
+        <exec command="composer install" dir="${t4.dir}" checkreturn="true" returnProperty="exec.return" outputProperty="exec.output" />
+        <if>
+            <not><equals arg1="0" arg2="${exec.return}" /></not>
+            <then>
+                <fail message="${exec.output}" />
+            </then>
+        </if>
+        <echo msg="${exec.output}" />
+    </target>
+
+
 
 
 
@@ -43,6 +61,6 @@
         <symlink target="${current.dir}" link="/home/site/www/${build.branch}/current" overwrite="true" />
     </target>
 
-    <target name="build" depends="vars, copy, symlink" />
+    <target name="build" depends="vars, copy,composer,symlink" />
 
 </project>
