@@ -25,6 +25,9 @@ class Service
             'columns' => [
                 'title'     => ['type'=>'string'],
                 'text'  => ['type'=>'text'],
+                'paid'  => ['type'=>'bool'],
+                'tarif'  => ['type'=>'string'],
+
 
             ],
             'relations' => [

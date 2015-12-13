@@ -69,6 +69,9 @@ class Admin
         }
 
         $item->fill($this->app->request->post);
+        if (!isset($this->app->request->post->paid)) {
+            $item->paid=0;
+        }
         $item->save();
         $this->redirect('/admin/site/services');
 

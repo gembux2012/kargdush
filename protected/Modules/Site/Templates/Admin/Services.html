@@ -21,12 +21,20 @@
         <tr>
             <th>#</th>
             <th>Название</th>
+            <th>Платная</th>
             <th></th>
         </tr>
         {% for item in items %}
         <tr>
             <td><a href="/admin/site/edit/?id={{item.Pk}}">{{item.Pk}}</a></td>
             <td><a href="/admin/site/edit/?id={{item.Pk}}">{{item.title}}</a></td>
+            <td>
+                {% if item.paid  %}
+                <label><input type="checkbox"  disabled id="paid" checked name="paid" ></label><br>
+                {% else %}
+                <label><input type="checkbox" disabled id="paid"  name="paid" ></label><br>
+                {% endif %}
+            </td>
             <td style="white-space: nowrap">
                 <a class="btn btn-primary btn-sm" href="/admin/site/ServiceEdit?id={{item.Pk}}"><i class="glyphicon glyphicon-edit"></i></a>
                 <a class="btn btn-danger btn-sm confirmable" href="/admin/site/ServiceDelete/?id={{item.Pk}}"><i class="glyphicon glyphicon-remove"></i></a>

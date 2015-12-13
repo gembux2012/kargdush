@@ -32,11 +32,12 @@
             </div>
         </div>
     </div>
+
     <div class="tab-pane" id="two">
         <div class="col-sm-12">
 
             <div id="carousel3" class="owl-carousel">
-                {% for item in items %}
+                {% for item in itemspaid %}
                 <div style="margin: 5px">
                     <a href="/site/service?id={{item.Pk}}">
                         <div class="item-img-wrap ">
@@ -46,13 +47,13 @@
                             </div>
                         </div>
                     </a>
-                </div>
-                <div class="news-desc">
-                    <h4>{{item.title}}</h4>
-                    <span><a href="/site/service?id={{item.Pk}}">Подробнее...</a></span>
-                </div>
+                    <div class="news-desc">
+                        <h4>{{item.title}}</h4> {{item.tarif}} рублей в час
+                        <span><a href="/site/service?id={{item.Pk}}">Подробнее...</a></span>
+                    </div>
 
 
+                </div>
                 {% endfor %}
 
             </div>

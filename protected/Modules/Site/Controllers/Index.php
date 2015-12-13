@@ -22,7 +22,8 @@ class Index
 {
     public function actionServices()
     {
-        $this->data->items=Service::findAll();
+        $this->data->items=Service::findAll(['where'=>'paid=0']);
+        $this->data->itemspaid=Service::findAll(['where'=>'paid=1']);
 
     }
 
@@ -38,7 +39,7 @@ class Index
 
     public function actionPaidServices()
     {
-        $this->data->items=Service::findAll();
+        $this->data->items=Service::findAllByTitle(['where'=>'paid'==0]);
 
     }
 
