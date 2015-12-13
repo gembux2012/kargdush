@@ -1,0 +1,9 @@
+
+    <div class="fotorama " data-fit="cover" data-nav="none" data-autoplay="false" data-height="60%"
+         data-transition="crossfade" data-width="100%" >
+        <img src="items[0].image" alt="..." class="img-thumbnail">
+        {% for item in items %}
+        <div class="any inverse" data-img="{{item.image}}"><strong>Каргасокская ДЮСШ</strong> </div>
+        {% endfor %}
+    </div>
+
