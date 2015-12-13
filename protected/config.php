@@ -8,6 +8,7 @@ return [
             'dbname' => 'kargdush',
             'user' => 'root',
             'password' => '',
+
         ]
     ],
     'auth' => [
