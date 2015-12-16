@@ -13,6 +13,7 @@ class Module
                 ['title' => 'Секции ', 'url' => '/admin/site/services'],
                 ['title' => 'Тренеры ', 'url' => '/admin/site/trainers'],
                 ['title' => 'Ученики', 'url' => '/admin/site/Students'],
+                ['title' => 'Расписание', 'url' => '/admin/site/TimeTable'],
             ]],
         ];
 

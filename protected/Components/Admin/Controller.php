@@ -9,6 +9,7 @@ class Controller
     protected function access($action)
     {
         return !empty($this->app->user) && $this->app->user->hasRole('admin');
+
     }
 
 } 
