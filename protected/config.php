@@ -14,6 +14,7 @@ return [
     'auth' => [
         'expire' => 31536000 // 1 year
     ],
+
     'mail' => [
         'method' => 'smtp',
         'host' => 'smtp.gmail.com',
