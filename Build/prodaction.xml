@@ -86,6 +86,6 @@
         <symlink target="${current.dir}" link="/home/site/www/${build.branch}/current" overwrite="true" />
     </target>
 
-    <target name="build" depends="vars, copy,composer, migrate,symlink" />
+    <target name="build" depends="vars, copy,composer, migrate, symlink" />
 
 </project>
