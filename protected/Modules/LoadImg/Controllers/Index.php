@@ -19,6 +19,15 @@ class Index extends Controller
 
    }
 
+   public function actionLoadImage($id,$subclass)
+   {
+      $this->data->id=$id;
+      $this->data->subclass=$subclass;
+
+   }
+
+
+
    public function actionLoadDoc($id,$subclass)
    {
       $this->data->id=$id;
@@ -128,6 +137,62 @@ class Index extends Controller
                $item->doc=$path.$fileName;
                $item->title=$this->app->request->post->name;
                $item->$subclass=$this->app->request->post->id;
+               $item->save();
+
+            }
+
+         }
+         echo json_encode($ret);
+      }
+   }
+
+   public function actionUpLoadImage()
+   {
+      $path = '/site/image/' . $this->app->request->post
+              ->subclass . '/' . $this->app->request->post->id . '/';
+
+      $realUploadPath = \T4\Fs\Helpers::getRealPath($path);
+      if (!is_dir($realUploadPath)) {
+         try {
+            \T4\Fs\Helpers::mkDir($realUploadPath);
+         } catch (\T4\Fs\Exception $e) {
+            throw new Exception($e->getMessage());
+         }
+      }
+      if (isset($_FILES["myfile"])) {
+         $ret = array();
+
+//	This is for custom errors;
+        	/*$custom_error= array();
+             $custom_error['jquery-upload-file-error']="File already exists";
+             echo json_encode($custom_error);
+             die();
+            */
+        echo json_encode( $error = $_FILES["myfile"]["error"]);
+         //You need to handle  both cases
+         //If Any browser does not support serializing of multiple files using FormData()
+         $subclass = $this->app->request->post->subclass;
+
+
+         if (!is_array($_FILES["myfile"]["name"])) //single file
+         {
+            $fileName = $_FILES["myfile"]["name"];
+            move_uploaded_file($_FILES["myfile"]["tmp_name"], $realUploadPath . $fileName);
+            $ret[] = $fileName;
+            $item = new SiteImage();
+            $item->image = $path . $fileName;
+            $item->$subclass = $this->app->request->post->id;
+            $item->save();
+         } else  //Multiple files, file[]
+         {
+            $fileCount = count($_FILES["myfile"]["name"]);
+            for ($i = 0; $i < $fileCount; $i++) {
+               $fileName = $_FILES["myfile"]["name"][$i];
+               move_uploaded_file($_FILES["myfile"]["tmp_name"][$i], $realUploadPath . $fileName);
+               $ret[] = $fileName;
+               $item = new SiteImage();
+               $item->image = $path . $fileName;
+               $item->$subclass = $this->app->request->post->id;
                $item->save();
 
             }

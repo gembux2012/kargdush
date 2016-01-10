@@ -54,9 +54,9 @@
         </div>
 
         <div class="form-group">
-            <label for="text" class="col-sm-2 control-label">Фото секции</label>
+            <label for="text" class="col-sm-2 control-label">Фото новости</label>
             <div class="col-sm-10">
-                <a onclick="save()" href="/LoadImg/?name=Новости&id={{item.Pk}}&subclass=story"
+                <a  href="/LoadImg/LoadImage?name=Новости&id={{item.Pk}}&subclass=story"
                    class="btn btn-primary">Добавить фото</a>
                 {% for photos in item.photo %}
                 <div class="media">
