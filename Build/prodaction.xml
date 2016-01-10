@@ -69,9 +69,11 @@
             <not><equals arg1="0" arg2="${exec.return}" /></not>
             <then>
                 <fail message="${exec.output}" />
+                <echo message="${exec.output}" />
             </then>
         </if>
         <echo msg="${exec.output}" />
+
     </target>
 
 
