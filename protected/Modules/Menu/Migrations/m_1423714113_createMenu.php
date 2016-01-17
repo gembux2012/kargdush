@@ -10,7 +10,7 @@ class m_1423714113_createMenu
 
     public function up()
     {
-        if (!$this->existsTable('__users')) {
+        if (!$this->existsTable('menu')) {
             $this->createTable('menu',
                 [
                     'title' => ['type' => 'string', 'length' => 1024],

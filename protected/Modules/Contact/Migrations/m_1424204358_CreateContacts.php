@@ -10,7 +10,7 @@ class m_1424204358_CreateContacts
 
     public function up()
     {
-        if (!$this->existsTable('__users')) {
+        if (!$this->existsTable('contacts')) {
             $this->createTable('contacts',
                 [
                     'q_datetime' => ['type' => 'datetime'],

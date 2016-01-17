@@ -10,14 +10,16 @@ class m_1425813475_createGalleryAlbums
 
     public function up()
     {
-        $this->createTable('albums', [
-            'title' => ['type' => 'string'],
-            'published' => ['type' => 'datetime'],
-        ], [
+        if (!$this->existsTable('albums')) {
+            $this->createTable('albums', [
+                'title' => ['type' => 'string'],
+                'published' => ['type' => 'datetime'],
+            ], [
 
-        ], [
-            'tree'
-        ]);
+            ], [
+                'tree'
+            ]);
+        }
     }
 
     public function down()
