@@ -11,7 +11,7 @@ class Index
 
     public function actionDefault()
     {
-
+     $this->data->useradmin=$this->app->user->hasRole('admin');
 
     }
 

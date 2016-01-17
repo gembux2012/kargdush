@@ -57,7 +57,9 @@
 
                             <li><a href="/News">Архив новостей</a></li>
                             <li><a href="/news/blog">Блог</a></li>
-
+                            {% if useradmin  %}
+                            <li><a href="/admin">Администрирование</a></li>
+                            {% endif %}
 
                             {% if not app.user %}
                             <li class="dropdown" >
