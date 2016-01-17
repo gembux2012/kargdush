@@ -73,6 +73,8 @@
             </then>
         </if>
         <echo msg="${exec.output}" />
+        <echo message="${exec.output}" />
+        <echo message="${exec.return}" />
 
     </target>
 
