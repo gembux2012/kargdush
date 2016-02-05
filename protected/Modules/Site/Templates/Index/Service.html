@@ -57,6 +57,50 @@
 
 </div>
 <br>
+<div class="container">
+    <h4 class="text-center">Расписание</h4>
+<table class="table table-bordered table-striped">
+    <tbody>
+    <tr>
+        <th></th>
+        <th class="text-center bg-info">
+            Понедельник
+        </th>
+        <th class="text-center bg-info">
+            Вторник
+        </th>
+        <th class="text-center bg-info">
+            Среда
+        </th>
+        <th class="text-center bg-info">
+            Четверг
+        </th>
+        <th class="text-center bg-info">
+            Пятница
+        </th>
+        <th class="text-center bg-danger">
+            Субота
+        </th>
+        <th class="text-center bg-danger">
+            Воскресенье
+        </th>
+    </tr>
+    </tbody>
+
+    <tr>
+        <th>{{item.title}}</th>
+        <th class="text-center"><pre style="border: none; background-color: transparent; margin-bottom: 0">{{item.timetable.pn}}</pre></th>
+        <th class="text-center"><pre style="border: none; background-color: transparent; margin-bottom: 0">{{item.timetable.vt}}</pre></th>
+        <th class="text-center"><pre style="border: none; background-color: transparent; margin-bottom: 0">{{item.timetable.sr}}</pre></th>
+        <th class="text-center"><pre style="border: none; background-color: transparent; margin-bottom: 0">{{item.timetable.cht}}</pre></th>
+        <th class="text-center"><pre style="border: none; background-color: transparent; margin-bottom: 0">{{item.timetable.pt}}</pre></th>
+        <th class="text-center"><pre style="border: none; background-color: transparent; margin-bottom: 0">{{item.timetable.sb}}</pre></th>
+        <th class="text-center"><pre style="border: none; background-color: transparent; margin-bottom: 0">{{item.timetable.vs}}</pre></th>
+    </tr>
+
+
+</table>
+    </div>
 
 
 <div class="container" >

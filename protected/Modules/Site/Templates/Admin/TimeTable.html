@@ -2,20 +2,15 @@
 {% block breadcrumbs %}
 <ol class="breadcrumb">
     <li><a href="/admin/">Админ-панель</a></li>
-    <li><a href="/admin/site/Trainers">Тренеры</a></li>
-    <li>Тренер</li>
+    <li>Расписание</li>
 </ol>
 {% endblock %}
 
 {% block header %}
-Тренер
+Расписание
 {% endblock %}
 
-{% block head %}
-<meta name="viewport" content="width=device-width">
-<link href="lib/css/fotorama.css" rel="stylesheet">
-<script src="lib/js/fotorama.js"></script>
-{%endblock%}
+
 
 {% block content %}
 
@@ -46,8 +41,34 @@
         </th>
     </tr>
     </tbody>
+
+    {% for item in items %}
     <tr>
-        <th>Бокс</th>
+        <th>{{item.services.title}}</th>
+        <th class="text-center"><a href="#"   class="field" data-type="textarea" data-pk="{{item.Pk}}" data-name="pn" data-url="/admin/site/SetTimeTable" data-original-title="Введите дату начала и окончания работы">{{item.pn}}</a></th>
+        <th class="text-center"><a href="#"   class="field" data-type="textarea" data-pk="{{item.Pk}}" data-name="vt" data-url="/admin/site/SetTimeTable" data-original-title="Введите дату начала и окончания работы">{{item.vt}}</a></th>
+        <th class="text-center"><a href="#"   class="field" data-type="textarea" data-pk="{{item.Pk}}" data-name="sr" data-url="/admin/site/SetTimeTable" data-original-title="Введите дату начала и окончания работы">{{item.sr}}</a></th>
+        <th class="text-center"><a href="#"   class="field" data-type="textarea" data-pk="{{item.Pk}}" data-name="cht" data-url="/admin/site/SetTimeTable" data-original-title="Введите дату начала и окончания работы">{{item.cht}}</a></th>
+        <th class="text-center"><a href="#"   class="field" data-type="textarea" data-pk="{{item.Pk}}" data-name="pt" data-url="/admin/site/SetTimeTable" data-original-title="Введите дату начала и окончания работы">{{item.pt}}</a></th>
+        <th class="text-center"><a href="#"   class="field" data-type="textarea" data-pk="{{item.Pk}}" data-name="sb" data-url="/admin/site/SetTimeTable" data-original-title="Введите дату начала и окончания работы">{{item.sb}}</a></th>
+        <th class="text-center"><a href="#"   class="field" data-type="textarea" data-pk="{{item.Pk}}" data-name="vs" data-url="/admin/site/SetTimeTable" data-original-title="Введите дату начала и окончания работы">{{item.vs}}</a></th>
     </tr>
+    {% endfor %}
+
 </table>
+{% endblock %}
+
+{% block pagescript %}
+<script type="text/javascript">
+
+    $(function () {
+
+
+        $('.field').editable({
+            mode: 'inline',
+
+        });
+    })
+</script>
+
 {% endblock %}

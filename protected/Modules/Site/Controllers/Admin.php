@@ -9,6 +9,7 @@ use App\Modules\Site\Models\Service;
 use App\Modules\Site\Models\Student;
 use App\Modules\Site\Models\SiteImage;
 use App\Modules\Site\Models\SiteDoc;
+use App\Modules\Site\Models\TimeTable;
 use App\Modules\Site\Models\Trainer;
 use T4\Core\Collection;
 use App\Models\UserData;
@@ -290,7 +291,24 @@ class Admin
 
     public  function actionTimeTable()
     {
-
+       /* $services=Service::findAll();
+        foreach($services as  $service){
+            $tt=new TimeTable();
+            //var_dump($service->__id);die;
+            $tt->services=$service->Pk;
+            $tt->save();
+        }
+       */
+        $this->data->items=TimeTable::findAll();
     }
+
+    public  function actionSetTimeTable()
+    {
+        $item=TimeTable::findByPK($this->app->request->post->pk);
+        $item->{$this->app->request->post->name}=$this->app->request->post->value;
+        $item->save();
+        die;
+    }
+
 
 }

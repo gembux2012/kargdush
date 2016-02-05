@@ -34,6 +34,8 @@ class Service
                 'userdata' =>['type' => self::MANY_TO_MANY, 'model' =>UserData::class],
                 'photo' =>['type' => self::HAS_MANY, 'model' =>SiteImage::class],
                 'student' =>['type' => self::MANY_TO_MANY, 'model' =>Student::class],
+                'timetable' =>['type' => self::HAS_ONE, 'model' =>TimeTable::class],
+
             ]
     ];
 

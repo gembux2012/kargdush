@@ -12,6 +12,7 @@ namespace App\Modules\Site\Controllers;
 use App\Modules\Site\Models\Service;
 use App\Modules\Site\Models\Org;
 use App\Modules\Site\Models\Student;
+use App\Modules\Site\Models\TimeTable;
 use App\Modules\Site\Models\Trainer;
 use App\Models\UserData;
 use T4\Mvc\Controller;
@@ -72,6 +73,12 @@ class Index
         $this->data->item=Student::findByPK($id);
 
     }
+
+    public function actionTimeTable()
+    {
+        $this->data->items=TimeTable::findAll();
+    }
+
 
 
 }
