@@ -13,6 +13,7 @@ class Index
     {
      if($this->app->user)
         $this->data->useradmin=$this->app->user->hasRole('admin');
+        //var_dump($this->app->user->roles[0]->title);die;
 
     }
 

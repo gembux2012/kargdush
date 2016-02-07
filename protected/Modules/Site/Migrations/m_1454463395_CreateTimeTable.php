@@ -14,13 +14,13 @@ class m_1454463395_CreateTimeTable
         {
             $this->createTable('timetables', [
                 'service' => ['type' => 'string'],
-                'pn' => ['type' => 'string', 'default'=>''],
-                'vt' => ['type' => 'string', 'default'=>''],
-                'sr' => ['type' => 'string', 'default'=>''],
-                'cht' => ['type' => 'string','default'=>''],
-                'pt' => ['type' => 'string','default'=>''],
-                'sb' => ['type' => 'string','default'=>''],
-                'vs' => ['type' => 'string','default'=>''],
+                'pn' => ['type' => 'string' ],
+                'vt' => ['type' => 'string'],
+                'sr' => ['type' => 'string'],
+                'cht' => ['type' => 'string'],
+                'pt' => ['type' => 'string'],
+                'sb' => ['type' => 'string'],
+                'vs' => ['type' => 'string'],
                 '__service_id' => ['type' => 'link'],
             ]);
 
@@ -29,7 +29,7 @@ class m_1454463395_CreateTimeTable
 
     public function down()
     {
-        $this->dropTable('timetable');
+        $this->dropTable('timetables');
     }
 
 }

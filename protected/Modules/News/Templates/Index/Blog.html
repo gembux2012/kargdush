@@ -54,9 +54,9 @@
                         <h5 class="widgetheading">Темы</h5>
                         <ul class="cat">
                             {% for theme in themes %}
-                            <li><i class="icon-angle-right"></i><a href="/news/blog?topic={{theme.Pk}}">{{theme.title}}</a><span> </span></li>
+                            <li><i class="icon-angle-right"></i><a href="/news/blog?topic={{theme.Pk}}"> {{theme.title}} ({{theme.stories.count}})</a><span> </span></li>
                             {% endfor %}
-                            <li><i class="icon-angle-right"></i><a href="/news/blog?topic=4">Все темы</a><span> </span></li>
+                            <li><i class="icon-angle-right"></i><a href="/news/blog?topic=2">Все темы </a><span> </span></li>
                         </ul>
                     </div><br><br>
                     {% if app.user.userdata.name is not empty %}

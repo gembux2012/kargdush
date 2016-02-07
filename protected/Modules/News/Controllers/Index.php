@@ -84,6 +84,7 @@ class Index
         $this->data->activePage = $page;
         $this->data->pageSize = self::PAGE_SIZE;
         $this->data->themes = Topic::findByTitle('Блог')->findAllChildren();
+        //var_dump($this->data->themes[1]->stories);die;
         $this->data->topic=$topic;
         //$this->data->user=User::findByPK($this->app->user->__id)->userdata->name;
 
