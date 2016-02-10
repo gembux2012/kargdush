@@ -69,6 +69,7 @@
                             {% endif %}
 
                             {% if not app.user %}
+                            <li><a href="/Zoom" >Версия для слабовидящих</a></li>
                             <li class="dropdown" >
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true"><i class="fa fa-user"></i></a>
 
@@ -112,7 +113,7 @@
         <!-- end header -->
      </div>
     <div>
-    вы: {{app.user.userdata.name}} {{app.user.roles[0].title}}
+
         </div>
         {% block content %}{% endblock %}
 

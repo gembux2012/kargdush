@@ -1,0 +1,15 @@
+{% extends 'Default.html' %}
+
+{% block content %}
+<h2 class="text-center">Новости</h2>
+{% for item in items %}
+
+    <h4>{{item.published|date("d.m.Y")}}</h4>
+    <h3>{{item.title}}</h3>
+
+    <h3>{{item.lead|raw}}</h3>
+    <h3>{{item.text|raw}}</h3>
+<hr  style="border: 1px solid black">
+
+{% endfor %}
+{% endblock %}

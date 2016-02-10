@@ -1,0 +1,15 @@
+{% extends 'Default.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="text-center">Тренеры</h2>
+
+    {% for item in items %}
+    <a style="color: black" href=""><h3 >
+        {{item.name}}
+    </h3></a></p>
+    <h4>{{item.text|raw}}</h4>
+    {% endfor %}
+
+</div>
+{% endblock %}

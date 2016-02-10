@@ -2,6 +2,9 @@
 
 {% block content %}
 <div class="container" style="height: 100px"></div>
+
+
+<div class="container" style="height: 100px"></div>
 <section id="inner-headline">
 <div class="container">
     <div class="row">
@@ -77,6 +80,6 @@
     </div>
 </section>
 <div class="container">
-<div class="row">{{widget('pager', {'total': itemsCount, 'size': pageSize, 'active': activePage, 'myPage': index, 'url':'/news/blog?page=%d'})}}</div>
+<div class="row">{{widget('pager', {'total': itemsCount, 'size': pageSize, 'active': activePage, 'myPage': topic, 'url':'/news/blog?page=%d'})}}</div>
 </div>
 {% endblock %}

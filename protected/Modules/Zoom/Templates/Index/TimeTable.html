@@ -1,0 +1,50 @@
+{% extends 'Default.html' %}
+
+{% block content %}
+    <h3 class="text-center">Расписание</h3>
+
+    <table     style="border:1px solid black">
+        <tbody>
+        <tr >
+            <th class="text-center" style="border:1px solid black;padding: 20px"></th>
+            <th style="border:1px solid black;padding: 20px">
+                <h4 class="text-center" >Понедельник</h4>
+            </th>
+            <th style="border:1px solid black;padding: 20px">
+                <h4 class="text-center" >Вторник</h4>
+            </th>
+            <th style="border:1px solid black;padding: 20px">
+                <h4 class="text-center" >Среда</h4>
+            </th>
+            <th style="border:1px solid black;padding: 20px">
+                <h4 class="text-center" >Четверг</h4>
+            </th>
+            <th style="border:1px solid black;padding: 20px">
+                <h4 class="text-center" >Пятница</h4>
+            </th>
+            <th style="border:1px solid black;padding: 20px">
+                <h4 class="text-center" >Субота</h4>
+            </th>
+            <th style="border:1px solid black;padding: 20px">
+                <h4 class="text-center" >Воскресенье</h4>
+            </th>
+        </tr>
+        </tbody>
+
+        {% for item in items %}
+        <tr>
+            <th class="text-center" style="border:1px solid black; padding: 20px"><h4>{{item.services.title}}</h4></th>
+            <th class="text-center" style="border:1px solid black; padding: 20px"><pre style="border: none; background-color: transparent; margin-bottom: 0"><h4>{{item.pn}}</h4></pre></th>
+            <th class="text-center" style="border:1px solid black; padding: 20px"><pre style="border: none; background-color: transparent; margin-bottom: 0"><h4>{{item.vt}}</h4></pre></th>
+            <th class="text-center" style="border:1px solid black; padding: 20px"><pre style="border: none; background-color: transparent; margin-bottom: 0"><h4>{{item.sr}}</h4></pre></th>
+            <th class="text-center" style="border:1px solid black; padding: 20px"><pre style="border: none; background-color: transparent; margin-bottom: 0"><h4>{{item.cht}}</h4></pre></th>
+            <th class="text-center" style="border:1px solid black; padding: 20px"><pre style="border: none; background-color: transparent; margin-bottom: 0"><h4>{{item.pt}}</h4></pre></th>
+            <th class="text-center" style="border:1px solid black; padding: 20px"><pre style="border: none; background-color: transparent; margin-bottom: 0"><h4>{{item.sb}}</h4></pre></th>
+            <th class="text-center" style="border:1px solid black; padding: 20px"><pre style="border: none; background-color: transparent; margin-bottom: 0"><h4>{{item.vs}}</h4></pre></th>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+
+{% endblock %}

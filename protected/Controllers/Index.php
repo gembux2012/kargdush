@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Modules\Site\Models\Org;
 use T4\Mvc\Controller;
+use App\Modules\News\Models\Topic;
+use App\Modules\News\Models\Story;
 
 class Index
     extends Controller
@@ -23,6 +25,17 @@ class Index
     }
 
     public function actionFooter()
+    {
+        $item = Topic::findByPk(2);
+        $lft=$item->__lft;
+        $rgt=$item->__rgt;
+        $this->data->item=Org::findByPK(1);
+        $this->data->blog=Story::findByQuery('SELECT * FROM news_stories  WHERE __topic_id
+            IN (SELECT __id FROM news_topics WHERE __lft >='.$lft.' AND __rgt <= '.$rgt.' ) AND published IS NOT NULL  ORDER BY published DESC LIMIT 1' );
+        //var_dump()
+    }
+
+    public function actionZoom()
     {
         $this->data->item=Org::findByPK(1);
     }
