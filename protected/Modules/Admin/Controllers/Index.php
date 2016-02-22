@@ -14,7 +14,7 @@ class Index
 
     public function actionDefault()
     {
-        $this->data->diskfree=disk_free_space("/home/alex/domains")/1024/1024/1024;
+        $this->data->diskfree=round(disk_free_space(\T4\ROOT_PATH)/1024/1024/1024,2);
 
     }
 
