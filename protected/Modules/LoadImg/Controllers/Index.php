@@ -63,8 +63,7 @@ class Index extends Controller
 // Декодируем данные, закодированные алгоритмом MIME base64
       $encodedData = str_replace(' ','+',$data[1]);
       $decodedData = base64_decode($encodedData);
-      var_dump($decodedData);
-      var_dump($uploaddir.$name);
+
 // Создаем изображение на сервере
       if(file_put_contents($uploaddir.$name, $decodedData)) {
          echo $name.":загружен успешно";
@@ -73,6 +72,14 @@ class Index extends Controller
          // Показать сообщение об ошибке, если что-то пойдет не так.
          echo "Что-то пошло не так. Убедитесь, что файл не поврежден!";
       }
+
+      $in_img=imagecreatefromjpeg($path.$name);
+      $out_img=imagecreatetruecolor(500,500);
+      var_dump(imagecopyresampled($out_img,$in_img,0,0,0,0,500,500,imagesx($in_img),imagesy($in_img)));
+
+      var_dump(imagejpeg($out_img,$path.'tmp.jpg',NULL));die;
+      imagedestroy($in_img);
+      imagedestroy($out_img);
       //$lin='__'.lcfirst($this->app->request->post->class).'_id';
       $subclass=$this->app->request->post->subclass;
       $item=new SiteImage();
@@ -190,6 +197,15 @@ class Index extends Controller
                $fileName = $_FILES["myfile"]["name"][$i];
                move_uploaded_file($_FILES["myfile"]["tmp_name"][$i], $realUploadPath . $fileName);
                $ret[] = $fileName;
+
+               $in_img=imagecreatefromjpeg($path.$fileName);
+               $out_img=imagecreatetruecolor(500,500);
+               var_dump(imagecopyresampled($out_img,$in_img,0,0,0,0,500,500,imagesx($in_img),imagesy($in_img)));
+
+               var_dump(imagejpeg($out_img,$path.'tmp.jpg',NULL));die;
+               imagedestroy($in_img);
+               imagedestroy($out_img);
+
                $item = new SiteImage();
                $item->image = $path . $fileName;
                $item->$subclass = $this->app->request->post->id;

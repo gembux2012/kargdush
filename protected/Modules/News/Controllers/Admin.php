@@ -8,6 +8,8 @@ use App\Modules\News\Models\Story;
 use App\Modules\News\Models\Topic;
 use App\Modules\Site\Models\SiteImage;
 use T4\Core\Exception;
+use T4\Fs\Helpers;
+use App\Components\SimpleImage;
 
 
 class Admin
@@ -45,9 +47,25 @@ class Admin
         if (null === $id || 'new' == $id) {
             $this->data->item = new Story();
         } else {
+            $this->Resize($id);
             $this->data->item = Story::findByPK($id);
+
         }
     }
+
+  public function Resize($id)
+  {
+      $item = Story::findByPK($id);
+      if (isset($item->photo[0])) {
+          $realPath = Helpers::getRealPath($item->photo[0]->image);
+          $image = new SimpleImage();
+          $image->load($realPath);
+          $image->resize(1024, 360);
+          //$image->resizeToHeight(360);
+          $image->save($realPath);
+
+      }
+  }
 
     public function actionSave()
     {

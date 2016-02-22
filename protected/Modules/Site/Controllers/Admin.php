@@ -11,6 +11,7 @@ use App\Modules\Site\Models\SiteImage;
 use App\Modules\Site\Models\SiteDoc;
 use App\Modules\Site\Models\TimeTable;
 use App\Modules\Site\Models\Trainer;
+use App\Modules\Site\Module;
 use T4\Core\Collection;
 use App\Models\UserData;
 use T4\Core\Std;
@@ -21,6 +22,9 @@ class Admin
   public function actionServices()
   {
     $this->data->items=Service::findAll();
+    $m=new Module();
+      $n=$m->getAdminMenu();
+      var_dump($n[0]['sub'][5]);die;
   }
 
     public function actionServiceEdit($id = 'new')

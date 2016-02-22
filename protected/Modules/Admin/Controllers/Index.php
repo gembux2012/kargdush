@@ -14,6 +14,8 @@ class Index
 
     public function actionDefault()
     {
+        $this->data->diskfree=disk_free_space("/home/alex/domains")/1024/1024/1024;
+
     }
 
     public function actionModule($module, $controller = 'Admin', $action = Router::DEFAULT_ACTION)

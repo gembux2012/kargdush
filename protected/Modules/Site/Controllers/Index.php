@@ -9,6 +9,7 @@
 namespace App\Modules\Site\Controllers;
 
 
+use App\Modules\Site\Models\Review;
 use App\Modules\Site\Models\Service;
 use App\Modules\Site\Models\Org;
 use App\Modules\Site\Models\Student;
@@ -21,6 +22,7 @@ use T4\Mvc\Controller;
 class Index
     extends Controller
 {
+    const PAGE_SIZE=10;
     public function actionServices()
     {
         $this->data->items=Service::findAll(['where'=>'paid=0']);
@@ -79,6 +81,29 @@ class Index
         $this->data->items=TimeTable::findAll();
     }
 
+    public function actionReviews($page=1)
+    {
+       $this->data->itemsCount=Review::findAll()->count();
+        $this->data->items=Review::findAll();
+        $this->data->items = Review::findAll([
+            'offset' => ($page - 1) * self::PAGE_SIZE,
+            'limit' => self::PAGE_SIZE,
+            'order by' => 'desk',
+
+        ]);
+        $this->data->activePage = $page;
+        $this->data->pageSize = self::PAGE_SIZE;
+    }
+
+    public function actionReviewsSave()
+    {
+        $item=new Review();
+        $item->text=$this->app->request->post->text;
+        $item->publiched=date('Y-m-d H:i:s', time());;
+        $item->save();
+        $this->redirect('/Site/Reviews');
+
+    }
 
 
 }
