@@ -22,9 +22,7 @@ class Admin
   public function actionServices()
   {
     $this->data->items=Service::findAll();
-    $m=new Module();
-      $n=$m->getAdminMenu();
-      var_dump($n[0]['sub'][5]);die;
+
   }
 
     public function actionServiceEdit($id = 'new')
