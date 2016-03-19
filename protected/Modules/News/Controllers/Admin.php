@@ -60,8 +60,9 @@ class Admin
           $realPath = Helpers::getRealPath($item->photo[0]->image);
           $image = new SimpleImage();
           $image->load($realPath);
-          $image->resize(1024, 360);
-          //$image->resizeToHeight(360);
+          $image->resize(1024, 560);
+          //$image->scale(30);
+          //$image->resizeToWidth(160);
           $image->save($realPath);
 
       }

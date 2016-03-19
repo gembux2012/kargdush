@@ -13,7 +13,7 @@
         <php returnProperty="build.time" function="date">
             <param value="Y-m-d-H-i-s" />
         </php>
-        <resolvepath propertyName="current.dir" file="/home/site/www/${build.branch}/${build.time}" />
+        <resolvepath propertyName="current.dir" file="/var/www/site/data/www/www.kargdush.ru/${build.branch}/${build.time}" />
         <echo msg="Current build dir is: ${current.dir}" />
         <resolvepath propertyName="t4.dir" file="${project.dir}/t4" />
         <echo msg="T4 dir is: ${t4.dir}" />
