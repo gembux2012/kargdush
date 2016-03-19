@@ -50,7 +50,7 @@
             </then>
         </if>
         <echo msg="${exec.output}" />
-    </target>
+    </target>-->
 
     <!-- ============================================  -->
     <!-- Target: migrate                               -->
