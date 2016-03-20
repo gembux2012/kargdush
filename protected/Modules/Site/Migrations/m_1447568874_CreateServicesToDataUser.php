@@ -10,7 +10,7 @@ class m_1447568874_CreateServicesToDataUser
 
     public function up()
     {
-        if (!$this->existsTable('services_to_users_data'))
+        if (!$this->existsTable('services_to_userdata'))
         {
             $this->createTable('services_to_userdata', [
                 '__userdata_id' => ['type' => 'link'],
