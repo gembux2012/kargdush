@@ -90,7 +90,7 @@
     <!-- Target: symlink                                -->
     <!-- ============================================  -->
     <target name="symlink">
-        <symlink target="${current.dir}" link="/home/site/www/${build.branch}/current" overwrite="true" />
+        <symlink target="${current.dir}" link="/var/www/site/data/www/kargdush.ru/${build.branch}/current" overwrite="true" />
     </target>
 
     <target name="build" depends="vars, copy, migrate, symlink" />
