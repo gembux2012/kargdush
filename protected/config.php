@@ -7,7 +7,7 @@ return [
             'host' => 'localhost',
             'dbname' => 'kargdush',
             'user' => 'kargdush',
-            'password' => 'Password00',
+            'password' => 'Supervisor123',
 
         ]
     ],
