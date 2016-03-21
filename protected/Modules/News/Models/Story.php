@@ -51,7 +51,7 @@ class Story
     public function beforeSave()
     {
         if ($this->isNew()) {
-            date_default_timezone_set("Asia/Novosibirsk");
+
             $this->published = date('Y-m-d H:i:s', time());
         }
         return true;
