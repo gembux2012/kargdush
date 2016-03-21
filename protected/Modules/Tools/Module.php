@@ -1,5 +1,5 @@
 <?php
-namespace App\Modules\Site;
+namespace App\Modules\Tools;
 
 class Module
     extends \App\Components\Module
